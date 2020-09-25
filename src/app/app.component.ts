@@ -1,3 +1,15 @@
+/**
+ * 
+ * ================================
+ * ; Title: Nodebucket Project
+ * ; Author: James Brown/Professor Krasso
+ * ; Modified by: James Brown
+ * ; Date: 9/25/2020
+ * ; Description: Nodebucket project for web-450
+ * 
+ */
+
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +18,5 @@ import { Component } from '@angular/core';
   styles: [``]
 })
 export class AppComponent {
-  title = 'nodebucket';
+  
 }
