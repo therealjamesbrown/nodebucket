@@ -150,6 +150,17 @@
       var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/router */
       "tyNb");
+      /**
+       *
+       * ================================
+       * ; Title: Nodebucket Project
+       * ; Author: James Brown/Professor Krasso
+       * ; Modified by: James Brown
+       * ; Date: 9/25/2020
+       * ; Description: Nodebucket project for web-450
+       *
+       */
+
 
       var AuthLayoutComponent = /*#__PURE__*/function () {
         function AuthLayoutComponent() {
@@ -274,6 +285,17 @@
       var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! ngx-cookie-service */
       "b6Qw");
+      /**
+       *
+       * ================================
+       * ; Title: Nodebucket Project
+       * ; Author: James Brown/Professor Krasso
+       * ; Modified by: James Brown
+       * ; Date: 9/25/2020
+       * ; Description: Nodebucket project for web-450
+       *
+       */
+
 
       var AuthGuard = /*#__PURE__*/function () {
         function AuthGuard(router, cookieService) {
@@ -362,6 +384,17 @@
       var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/router */
       "tyNb");
+      /**
+       *
+       * ================================
+       * ; Title: Nodebucket Project
+       * ; Author: James Brown/Professor Krasso
+       * ; Modified by: James Brown
+       * ; Date: 9/25/2020
+       * ; Description: Nodebucket project for web-450
+       *
+       */
+
 
       var AppComponent = function AppComponent() {
         _classCallCheck(this, AppComponent);
@@ -485,6 +518,17 @@
       var _angular_material_button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
       /*! @angular/material/button */
       "bTqV");
+      /**
+       *
+       * ================================
+       * ; Title: Nodebucket Project
+       * ; Author: James Brown/Professor Krasso
+       * ; Modified by: James Brown
+       * ; Date: 9/25/2020
+       * ; Description: Nodebucket project for web-450
+       *
+       */
+
 
       function SigninComponent_div_1_Template(rf, ctx) {
         if (rf & 1) {
@@ -781,6 +825,17 @@
       var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
       /*! @angular/material/form-field */
       "kmnG");
+      /**
+       *
+       * ================================
+       * ; Title: Nodebucket Project
+       * ; Author: James Brown/Professor Krasso
+       * ; Modified by: James Brown
+       * ; Date: 9/25/2020
+       * ; Description: Nodebucket project for web-450
+       *
+       */
+
 
       var AppModule = function AppModule() {
         _classCallCheck(this, AppModule);
@@ -877,6 +932,17 @@
       var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! @angular/common */
       "ofXK");
+      /**
+       *
+       * ================================
+       * ; Title: Nodebucket Project
+       * ; Author: James Brown/Professor Krasso
+       * ; Modified by: James Brown
+       * ; Date: 9/25/2020
+       * ; Description: Nodebucket project for web-450
+       *
+       */
+
 
       var BaseLayoutComponent = /*#__PURE__*/function () {
         function BaseLayoutComponent() {
@@ -1065,6 +1131,17 @@
       var _pages_signin_signin_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! ./pages/signin/signin.component */
       "UE1v");
+      /**
+       *
+       * ================================
+       * ; Title: Nodebucket Project
+       * ; Author: James Brown/Professor Krasso
+       * ; Modified by: James Brown
+       * ; Date: 9/25/2020
+       * ; Description: Nodebucket project for web-450
+       *
+       */
+
 
       var routes = [{
         path: '',

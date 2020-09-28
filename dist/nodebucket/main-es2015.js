@@ -68,6 +68,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthLayoutComponent", function() { return AuthLayoutComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/**
+ *
+ * ================================
+ * ; Title: Nodebucket Project
+ * ; Author: James Brown/Professor Krasso
+ * ; Modified by: James Brown
+ * ; Date: 9/25/2020
+ * ; Description: Nodebucket project for web-450
+ *
+ */
 
 
 
@@ -133,6 +143,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "tyNb");
 /* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-cookie-service */ "b6Qw");
+/**
+ *
+ * ================================
+ * ; Title: Nodebucket Project
+ * ; Author: James Brown/Professor Krasso
+ * ; Modified by: James Brown
+ * ; Date: 9/25/2020
+ * ; Description: Nodebucket project for web-450
+ *
+ */
 
 
 
@@ -179,6 +199,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/**
+ *
+ * ================================
+ * ; Title: Nodebucket Project
+ * ; Author: James Brown/Professor Krasso
+ * ; Modified by: James Brown
+ * ; Date: 9/25/2020
+ * ; Description: Nodebucket project for web-450
+ *
+ */
 
 
 
@@ -221,6 +251,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/form-field */ "kmnG");
 /* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/input */ "qFsG");
 /* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/button */ "bTqV");
+/**
+ *
+ * ================================
+ * ; Title: Nodebucket Project
+ * ; Author: James Brown/Professor Krasso
+ * ; Modified by: James Brown
+ * ; Date: 9/25/2020
+ * ; Description: Nodebucket project for web-450
+ *
+ */
 
 
 
@@ -344,6 +384,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/card */ "Wp6s");
 /* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/input */ "qFsG");
 /* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material/form-field */ "kmnG");
+/**
+ *
+ * ================================
+ * ; Title: Nodebucket Project
+ * ; Author: James Brown/Professor Krasso
+ * ; Modified by: James Brown
+ * ; Date: 9/25/2020
+ * ; Description: Nodebucket project for web-450
+ *
+ */
 
 
 
@@ -447,6 +497,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/button */ "bTqV");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "tyNb");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/**
+ *
+ * ================================
+ * ; Title: Nodebucket Project
+ * ; Author: James Brown/Professor Krasso
+ * ; Modified by: James Brown
+ * ; Date: 9/25/2020
+ * ; Description: Nodebucket project for web-450
+ *
+ */
 
 
 
@@ -531,6 +591,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_auth_guard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./shared/auth.guard */ "Cp0R");
 /* harmony import */ var _shared_auth_layout_auth_layout_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shared/auth-layout/auth-layout.component */ "50Te");
 /* harmony import */ var _pages_signin_signin_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/signin/signin.component */ "UE1v");
+/**
+ *
+ * ================================
+ * ; Title: Nodebucket Project
+ * ; Author: James Brown/Professor Krasso
+ * ; Modified by: James Brown
+ * ; Date: 9/25/2020
+ * ; Description: Nodebucket project for web-450
+ *
+ */
 
 
 
