@@ -284,6 +284,7 @@ function SigninComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r0.error, " ");
 } }
 class SigninComponent {
+    //add matsnackbar if you want
     constructor(router, cookieService, fb, http) {
         this.router = router;
         this.cookieService = cookieService;

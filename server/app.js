@@ -6,6 +6,7 @@
  * ; Modified by: James Brown
  * ; Date: 9/25/2020
  * ; Description: Nodebucket project for web-450
+ * ================================
  * 
  */
 
@@ -20,6 +21,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const Employee = require('./models/employee');
+const EmployeeApi = require('./routes/employee-api'); //import the employee api. sets up routes for employee object
+
 
 
 /**
@@ -54,54 +57,16 @@ mongoose.connect(conn, {
   console.log(`MongoDB Error: ${err.message}`)
 }); // end mongoose connection
 
+
+
 /**
+ * 
  * API(s) go here...
- */
-
-
-
-/**
- * 
- * FIND EMPLOYEE BY ID
  * 
  */
-//the colon in ":empId" serves as a placeholder to catch value of route
-//example https://localhost:3000/api/employees/1007
-app.get('/api/employees/:empId', async(req, res) => {
-  try{
-    Employee.findOne({
-      'empId': req.params.empId
-    },
-    function(err, employee){
-      /**
-       * 
-       * if db error handle it
-       * 
-       */
-      if (err){
-        console.log(err);
-        res.status(500).send({
-          'message': 'Internal server error with get emp id api'
-        }) 
-      } else {
-        /**
-         * 
-         * if no db error
-         * 
-         */
-        console.log(employee)
-        res.json(employee).status(200);
-      }
-    });
-  } catch(e) {
-    //log error 
-    console.log(e);
-    //send response to the end user
-    res.status(500).send({
-      'message': 'Internal server error...'
-    });
-  }
-});
+app.use('/api/employees', EmployeeApi); //localhost:3000/api/employees
+
+
 
 /**
  * Create and start server
