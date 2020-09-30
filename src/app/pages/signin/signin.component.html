@@ -1,31 +1,48 @@
+<mat-toolbar>
+    <span><img src="./assets/logo.png" class="brandLogo"></span>
+  </mat-toolbar>
 <div fxLayout="column">
+    <!--
     <div fxFlex *ngIf="error">
         {{ error }}
     </div>
-    <mat-card fxFlex>
+    -->
+    <div fxFlex>
+    <mat-card class="mat-elevation-z8 signin">
         <mat-card-title>
-            Employee Sign-in Page
+            Log In
         </mat-card-title>
 
         <mat-card-subtitle>
-            You must enter a valid employeeId to proceed.
+            <!--You must enter a valid employeeId to proceed.-->
         </mat-card-subtitle>
-        <form [formGroup]="form" (ngSubmit)="login(); form.reset();">
-            <mat-card-content>
-                <mat-form-field>
-                    <input matInput
-                            [formControl]="form.controls['empId']"
-                            placeholder="Employee ID" />
+        <mat-card-content>
+            <div class="msg-error" *ngIf="error">
+                {{error}}
+            </div>
+            <mat-card class="mat-elevation-z0" fxLayout="column" fxLayoutGap="10px">
+                <form [formGroup]="form" (ngSubmit)="login(); form.reset();">
+                    <mat-card-content>
+                        <mat-form-field>
+                            <input matInput
+                                    [formControl]="form.controls['empId']"
+                                    placeholder="EmployeeID" />
                         <!---
                             <mat-error *ngIf="form.controls['empId'.hasError('required')">
                                 EmployeeID is a required field
                             </mat-error>
                         -->
-                </mat-form-field>
+                        </mat-form-field>
+                    </mat-card-content>
+                        <mat-card-actions align="end">
+                        <button type="submit" fxFlex mat-raised-button color="primary" [disabled]="!form.valid">Sign-in</button>
+                        </mat-card-actions>
+                </form>
+            </mat-card>
             </mat-card-content>
-            <mat-card-actions align="end">
-                <button type="submit" fxFlex mat-raised-button color="primary" [disabled]="!form.valid">Sign-in</button>
-            </mat-card-actions>
-        </form>
-    </mat-card>
+        </mat-card>
+        <div class="mainName">
+        <h2>Nodebucket Login</h2>
+    </div>
+    </div>
 </div>
