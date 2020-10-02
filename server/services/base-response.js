@@ -1,3 +1,23 @@
+/**
+ * 
+ * ================================
+ * ; Title: Nodebucket Project
+ * ; Author: James Brown/Professor Krasso
+ * ; Modified by: James Brown
+ * ; Date: 9/25/2020
+ * ; Description: Nodebucket project for web-450
+ * ================================
+ * 
+ */
+
+
+/**
+ * 
+ * Class for handling success messages related to api calls
+ * 
+ */
+
+
 class BaseResponse {
     constructor(httpCode, message, data) {
         this.httpCode = httpCode;

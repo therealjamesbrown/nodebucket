@@ -1,7 +1,6 @@
 const express = require('express');
 const Employee = require('../models/employee');
 const router = express.Router();
-const errorMessage = require('../config/string-config');
 const BaseResponse = require('../services/base-response');
 const ErrorResponse = require('../services/error-response');
 
@@ -59,19 +58,22 @@ router.get('/:empId', async(req, res) => {
         //throw new Error('testing my new error response object');
         Employee.findOne({
             'empId': req.params.empId}, 
+            //return only empId todo and done properties
             'empId todo done', 
             function (err, employee){
+                //if error send response object from error response class 
                 if (err) {
                     console.log(err);
-                    const mongoDbErrorResponse = new ErrorResponse('500', 'Internal server error', err)
+                    const mongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err)
                     res.status(500).send(mongoDbErrorResponse.toObject());
-
+                    //if success log the employee and send success response class
                 } else {
                     console.log(employee);
                     const employeeTasksResponse = new BaseResponse('200', 'Successful!', employee);
                     res.json(employeeTasksResponse.toObject());
                 }
             })
+            //catch any other errors that happen and handle it
     } catch (e) {
         console.log(e);
         const errorCatchResponse = new ErrorResponse('500', 'Internal Server Error', e.message)
@@ -81,15 +83,11 @@ router.get('/:empId', async(req, res) => {
 
 
 
-//BEGIN LIVE CODEING SESSION 9/28
-
-
-
-
-
 /**
  * 
- * create task
+ * -- CREATE TASK API --
+ * 
+ * Api creates a task and adds it to the todo array for the provided employee ID.
  * 
  */
 router.post('/:empId/tasks', async(req, res) => {
@@ -147,10 +145,10 @@ router.post('/:empId/tasks', async(req, res) => {
 router.put('/:empId/tasks', async(req, res) =>{
     try {
         Employee.findOne({'empId': req.params.empId}, function(error, employee){
-            if (err){
-                console.log(err);
+            if (error){
+                console.log(error);
                 //enter error response
-                const updateTaskMongoResponse = new ErrorResponse('500', 'internal server error', err);
+                const updateTaskMongoResponse = new ErrorResponse('500', 'Internal Server Error', err);
                 res.status(500).send(updateTaskMongoResponse.toObject());
             } else{
                 console.log(employee);
@@ -162,7 +160,7 @@ router.put('/:empId/tasks', async(req, res) =>{
                 employee.save(function(err, updatedEmployee){
                     if(err){
                         console.log(err);
-                        const updateTaskMongoOnSaveResponse = new ErrorResponse('500', 'internal server error', err);
+                        const updateTaskMongoOnSaveResponse = new ErrorResponse('500', 'Internal Server Error', err);
                         res.status(500).send(updateTaskMongoOnSaveResponse.toObject());
                     } else {
                         console.log(updatedEmployee);
@@ -175,7 +173,7 @@ router.put('/:empId/tasks', async(req, res) =>{
 
     } catch(e){
         console.log(e);
-        const updateTaskCatchErrorREsponse = new ErrorResponse('500', 'internal error', e.message);
+        const updateTaskCatchErrorREsponse = new ErrorResponse('500', 'Internal Server Error', e.message);
         res.status(500).send(updateTaskCatchErrorREsponse.toObject());
     }
 })
@@ -197,24 +195,26 @@ router.delete('/:empId/tasks/:taskId', async(req, res) => {
         Employee.findOne({'empId': req.params.empId}, function(err, employee){
             if (err){
                 console.log(err);
-                const deleteTasksMongoDbErrorResponse = new ErrorResponse('500', 'internal serve err', err);
+                const deleteTasksMongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
                 res.status(500).send(deleteTasksMongoDbErrorResponse.toObject());
             }else{
-                console.log(employee);
-
+               // console.log(req.params.taskId);
+                //console.log(employee);
+                
                 const todoItem = employee.todo.find(item => item._id.toString() === req.params.taskId);
-                const doneItem = employee.todo.find(item => item._id.toString() === req.params.taskId);
+                const doneItem = employee.done.find(item => item._id.toString() === req.params.taskId);
+               
 
                 if (todoItem) {
                     employee.todo.id(todoItem._id).remove();
                     employee.save(function(err, updatedTodoItemEmployee){
                         if (err) {
                             console.log(err);
-                            const deleteToDoItemOnSaveMongoDbErrorResponse = new ErrorResponse('500', 'internal server error', err);
+                            const deleteToDoItemOnSaveMongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
                             res.status(500).send(deleteToDoItemOnSaveMongoDbErrorResponse.toObject());
                         } else {
                             console.log(updatedTodoItemEmployee);
-                            const deleteToDoItemOnSuccessResponse = new BaseResponse('200', 'removed item from todo list', emp1);
+                            const deleteToDoItemOnSuccessResponse = new BaseResponse('200', `Successfully removed task id: ${req.params.taskId} from the Todo list!`, updatedTodoItemEmployee);
                             res.json(deleteToDoItemOnSuccessResponse.toObject());
                         }
                     });
@@ -223,33 +223,29 @@ router.delete('/:empId/tasks/:taskId', async(req, res) => {
                     employee.save(function(err, updatedDoneItemEmployee){
                         if (err){
                             console.log(err);
-                            const deleteDoneItemErrorResponse = new ErrorResponse('500', 'internal error', err);
+                            const deleteDoneItemErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
                             //add error object
                             res.status(500).send(deleteDoneItemErrorResponse.toObject());
                         } else {
                             console.log(updatedDoneItemEmployee);
-                            const deleteDoneItemSuccessResponse = new BaseResponse('200', 'removed item from done list', updatedDoneItemEmployee);
-                            res.json(deleteDoneItemSuccessResponse.toObject)
+                            const deleteDoneItemSuccessResponse = new BaseResponse('200', `Successfully removed task id: ${req.params.taskId} from the Done list!`, updatedDoneItemEmployee);
+                            res.json(deleteDoneItemSuccessResponse.toObject());
                         }
                     })
 
                 } else {
-                    console.log('Invalid task ID');
-                    const deleteTasksNotFoundRes = new ErrorResponse('200', 'Cant find task ID', null);
+                    console.log('something else went wrong');
+                    const deleteTasksNotFoundRes = new ErrorResponse('200', 'Cannot find task ID. Please check the task ID and try again.', null);
                     res.status(200).send(deleteTasksNotFoundRes.toObject());
                 }
             }
         })
     } catch(e){
         console.log(e);
-        const deleteTaskCatchErrorResponse = new ErrorResponse('500', 'intenral err', e.message);
+        const deleteTaskCatchErrorResponse = new ErrorResponse('500', 'Internal Server Error', e.message);
         res.status(500).send(deleteTaskCatchErrorResponse.toObject());
     }
 })
-
-
-
-
 
 
 /**
@@ -279,170 +275,5 @@ this.http.put('/api/employees/' + empId + 'tasks', {
 })
  * 
  *End  angular code only
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  ///end live coding session 9/28
-/**
- * 
- *          -- CREATE TASK --
- * Finds empmloyee by id and adds task.
- * Tasks are automatically inserted into the todo array.
- * 
-
-router.post('/:empId/:taskname', async(req, res) => {
-    try {
-        console.log(req.params);
-        Employee.findOneAndUpdate({'empId': req.params.empId}, 
-        {$push: { todo: [{text: req.params.taskname}] }}, 
-        function (err, employee){
-            if (err) {
-                console.log(err);
-                res.status(500).send({
-                    'message': 'Internal server error!'
-                }) 
-            } else {
-                console.log(employee);
-                res.json(employee)
-            }
-        })
-    } catch (e) {
-        res.status(500).send({
-            'message': 'internal server error'
-        })
-    }
-  });
-
- */
-
-  /**
-   * 
-   *    --Delete Tasks--
-   * 
-  
-  
-   router.delete('/:empId/:currentStatus/:taskname', async(req, res) => {
-    //check if the current status is either todo or done, so we know where to look
-    //if it is in todo, delete from todo array
-    if(req.params.currentStatus === 'todo'){
-        try {
-            console.log(req.params);
-            Employee.findOneAndUpdate({'empId': req.params.empId}, 
-            {$pull: { todo: {"text": req.params.taskname}}}
-            , function (err, employee){
-                if (err) {
-                    console.log(err);
-                    res.status(500).send({
-                        'message': 'Internal server error!'
-                    });
-                } else {
-                    console.log(employee);
-                    res.json(employee)
-                }
-            })
-        } catch (e) {
-            res.status(500).send({
-                'message': 'internal server error'
-            })
-        }
-
-    //else delete from done array
-    } else {
-        try {
-            console.log(req.params);
-            Employee.findOneAndUpdate({'empId': req.params.empId}, 
-            {$pull: {done: {"text": req.params.taskname}}}
-            , function (err, employee){
-                if (err) {
-                    console.log(err);
-                    res.status(500).send({
-                        'message': 'Internal server error!'
-                    });
-                } else {
-                    console.log(employee);
-                    res.json(employee)
-                }
-            });
-        } catch (e) {
-            res.status(500).send({
-                'message': 'internal server error'
-            });
-        }
-    }
-  });
-
- */
-
- /**
- * 
- * Update Task
- * 
- 
-router.put('/:empId/:currentStatus/:taskname', async (req, res) => {
-    try {
-        console.log(req.params);
-        Employee.findOneAndUpdate({'empId': req.params.empId}, 
-        {
-            $pull: { todo: {"text": req.params.taskname}},
-            $push: { todo: [{text: req.params.taskname}]}, 
-        }
-        , function (err, employee){
-            if (err) {
-                console.log(err);
-                res.status(500).send({
-                    'message': 'Internal server error!'
-                });
-            } else {
-                console.log(employee);
-                res.json(employee)
-            }
-        })
-    } catch (e) {
-        res.status(500).send({
-            'message': 'internal server error'
-        })
-    }
-})
  */
 module.exports = router; 
