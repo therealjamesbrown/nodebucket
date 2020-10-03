@@ -1,7 +1,23 @@
+/**
+ * 
+ * ================================
+ * ; Title: Nodebucket Project
+ * ; Author: James Brown/Professor Krasso
+ * ; Modified by: James Brown
+ * ; Date: 10/3/2020
+ * ; Description: Nodebucket project for web-450
+ * ================================
+ */
+
+
 const express = require('express');
 const Employee = require('../models/employee');
 const router = express.Router();
+
+//base response class for successful resopnses to our apis
 const BaseResponse = require('../services/base-response');
+
+//base error class for error responses to our apis
 const ErrorResponse = require('../services/error-response');
 
 /**
@@ -59,7 +75,7 @@ router.get('/:empId', async(req, res) => {
         Employee.findOne({
             'empId': req.params.empId}, 
             //return only empId todo and done properties
-            'empId todo done', 
+            'empId todo doing done', 
             function (err, employee){
                 //if error send response object from error response class 
                 if (err) {
@@ -140,6 +156,8 @@ router.post('/:empId/tasks', async(req, res) => {
    * 
    * API: Update tasks
    * 
+   * This api captures a snapshot of what is currently in the request body and overwrites the todo/doing/done task objects
+   * that are currently in each todo/doing/done array
    */
 
 router.put('/:empId/tasks', async(req, res) =>{
@@ -154,6 +172,7 @@ router.put('/:empId/tasks', async(req, res) =>{
                 console.log(employee);
                 employee.set({
                     todo: req.body.todo,
+                    doing: req.body.doing,
                     done: req.body.done
                 });
 
@@ -188,23 +207,28 @@ router.put('/:empId/tasks', async(req, res) =>{
  * API: deleteTask
  * 
  */
-
-
 router.delete('/:empId/tasks/:taskId', async(req, res) => {
     try {
+        //grab the employee document from mongo
         Employee.findOne({'empId': req.params.empId}, function(err, employee){
             if (err){
                 console.log(err);
                 const deleteTasksMongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
                 res.status(500).send(deleteTasksMongoDbErrorResponse.toObject());
             }else{
-               // console.log(req.params.taskId);
-                //console.log(employee);
-                
+                console.log(employee);
+                console.log(req.params.taskId);
+                /*creating these variables and using find 
+                function to check if mongo generated task id matches the task id passed in the query string ':taskID'
+                */              
                 const todoItem = employee.todo.find(item => item._id.toString() === req.params.taskId);
+                const doingItem = employee.doing.find(item => item._id.toString() === req.params.taskId);
                 const doneItem = employee.done.find(item => item._id.toString() === req.params.taskId);
                
-
+                /*
+                if todoItem is truthy - meaning the above check determined the task is in the todo array
+                so we'll remove the task object from the todo array
+                */
                 if (todoItem) {
                     employee.todo.id(todoItem._id).remove();
                     employee.save(function(err, updatedTodoItemEmployee){
@@ -218,6 +242,8 @@ router.delete('/:empId/tasks/:taskId', async(req, res) => {
                             res.json(deleteToDoItemOnSuccessResponse.toObject());
                         }
                     });
+
+                //checking to see if doneItem was requested. If it was handle just like we did above
                 } else if (doneItem){
                     employee.done.id(doneItem._id).remove();
                     employee.save(function(err, updatedDoneItemEmployee){
@@ -232,10 +258,24 @@ router.delete('/:empId/tasks/:taskId', async(req, res) => {
                             res.json(deleteDoneItemSuccessResponse.toObject());
                         }
                     })
-
-                } else {
+                 //checking to see if doneItem was requested. If it was handle just like we did above
+                } else if(doingItem){
+                    employee.doing.id(doingItem._id).remove();
+                    employee.save(function(err, updatedDoingItemEmployee){
+                        if (err){
+                            console.log(err);
+                            const deleteDoingItemErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
+                            res.status(500).send(deleteDoingItemErrorResponse.toObject());
+                        } else {
+                            console.log(updatedDoingItemEmployee);
+                            const deleteDoingItemSuccess = new BaseResponse('200', `Successfully removed task id: ${req.params.taskId} from the Doing list!`, updatedDoingItemEmployee);
+                            res.json(deleteDoingItemSuccess.toObject());
+                        }
+                    })
+                //if we can't find the task id return a success with helpful message saying we couldn't find the task
+                }else {
                     console.log('something else went wrong');
-                    const deleteTasksNotFoundRes = new ErrorResponse('200', 'Cannot find task ID. Please check the task ID and try again.', null);
+                    const deleteTasksNotFoundRes = new ErrorResponse('200', `Cannot find task ID: ${req.params.taskId}. Please check the task ID and try again.`, null);
                     res.status(200).send(deleteTasksNotFoundRes.toObject());
                 }
             }
@@ -248,32 +288,5 @@ router.delete('/:empId/tasks/:taskId', async(req, res) => {
 })
 
 
-/**
- * 
- * angular code only
- * 
- * 
-this.http.post('/api/employees/' + empId + 'tasks', {
-    todo: this.todo,
-    done: this.done
-}).subscribe(res => {
 
-})
-
-interface Item{
-    text: String
-}
-
-const formValue = this.form.controls['item'].value;
-const item = new Item{
-    text: formValue
-}
-this.http.put('/api/employees/' + empId + 'tasks', {
-    item: this.item
-}).subscribe(res => {
-    
-})
- * 
- *End  angular code only
- */
 module.exports = router; 

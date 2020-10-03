@@ -4,9 +4,9 @@
  * ; Title: Nodebucket Project
  * ; Author: James Brown/Professor Krasso
  * ; Modified by: James Brown
- * ; Date: 9/25/2020
+ * ; Date: 10/3/2020
  * ; Description: Nodebucket project for web-450
- * 
+ * ================================
  */
 
 
@@ -20,11 +20,13 @@ const Schema = mongoose.Schema;
 const Item = require('./item');
 
 //define schema and tell mongoose how to map to mongodb atlas
-let empoloyeeSchema = new Schema({
+let empoloyeeSchema = new Schema(
+{
     empId:      { type: String, unique: true, dropDups: true },
     firstName:  { type: String },
     lastName:   { type: String },
     todo:       [Item],
+    doing:      [Item],
     done:       [Item]
 }, {
     //tell mongoose where to map db collection in atlas 
