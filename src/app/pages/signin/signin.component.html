@@ -1,6 +1,7 @@
-<mat-toolbar>
-    <span><img src="./assets/logo.png" class="brandLogo"></span>
-  </mat-toolbar>
+    <mat-toolbar >
+      <img src="./assets/logo.png" class="brandLogo">
+    </mat-toolbar>
+
 <div fxLayout="column">
     <!--
     <div fxFlex *ngIf="error">
@@ -18,7 +19,7 @@
         </mat-card-subtitle>
         <mat-card-content>
             <div class="msg-error" *ngIf="error">
-                {{error}}
+             <!--{{error}}-->   
             </div>
             <mat-card class="mat-elevation-z0" fxLayout="column" fxLayoutGap="10px">
                 <form [formGroup]="form" (ngSubmit)="login(); form.reset();">
@@ -41,8 +42,10 @@
             </mat-card>
             </mat-card-content>
         </mat-card>
-        <div class="mainName">
-        <h2>Nodebucket Login</h2>
-    </div>
-    </div>
+        <p  
+        [ngStyle.xs]="{'font-size.px': 50}"
+        [ngStyle.sm]="{'font-size.px': 60}"
+        [ngStyle.md]="{'font-size.px': 80}">
+        <span class="nodeStyle">N</span>odebucket <span class="nodeStyle">L</span>ogin</p>
+</div>
 </div>

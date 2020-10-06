@@ -1,24 +1,27 @@
-.signin{
+.signin.mat-card{
     width: 40%;
     margin: 12% auto;
+    margin-bottom: 70px;
 }
 
 .signin > mat-card-title, mat-card-subtitle, mat-card-content {
     text-align: center;
 }
 
-h2 {
+p {
     text-align: center;
     font-size: 80px;
-    margin-top: 1px;
+}
+
+.nodeStyle{
+    color: rgb(3 164 211);
 }
 
 .brandLogo{
-    width: 15%;
+    width: 70px;
 }
 
 mat-card {
-    margin-bottom: 10px;
     padding-top: 20px;
     padding-bottom: 1px;
 }

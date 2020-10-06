@@ -3,6 +3,10 @@
     font-size: 24px;
     font-weight: lighter;;
   }
+
+  .nav{
+    padding-bottom: 40px;
+  }
   
   .navbar-container {
     padding: 5px;
@@ -14,7 +18,7 @@
   }
   
   .main-content {
-    padding-left: 30px;
+    padding-top: 40px;
   }
   
   .footer {
@@ -38,3 +42,11 @@
     text-decoration: underline;
   }
   
+
+  .nav-spacer {
+    flex: 1 1 auto;
+  }
+
+  .brandLogo{
+    width: 70px;
+}

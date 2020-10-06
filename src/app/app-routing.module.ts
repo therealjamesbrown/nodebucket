@@ -17,6 +17,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './shared/auth.guard';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { SigninComponent } from './pages/signin/signin.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 
 
@@ -29,6 +30,10 @@ const routes: Routes = [
         path: '',
         component: HomeComponent,
         
+      },
+      {
+        path: 'not-found',
+        component: NotFoundComponent
       }
     ],
     canActivate: [AuthGuard]
@@ -46,7 +51,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'session/signin' 
+    redirectTo: '/not-found' 
    }
 ];
 
