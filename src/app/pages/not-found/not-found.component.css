@@ -1,0 +1,18 @@
+.notFoundImage{
+    width: 100%;
+}
+
+.notFoundContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.mainNotFound{
+    text-align: center;
+    size: 302px;
+}
+
+p{
+    font-size: 400%;
+    padding-bottom: 5px;
+}
