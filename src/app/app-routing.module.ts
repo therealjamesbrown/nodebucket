@@ -18,6 +18,7 @@ import { AuthGuard } from './shared/auth.guard';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AboutComponent } from './pages/about/about.component';
 
 
 
@@ -34,6 +35,10 @@ const routes: Routes = [
       {
         path: 'not-found',
         component: NotFoundComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
       }
     ],
     canActivate: [AuthGuard]

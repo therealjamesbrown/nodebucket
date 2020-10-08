@@ -1,9 +1,20 @@
 
+<!--button for creating task-->
+    <div fxFlex>
+      <div class="create-task-container" fxLayout="column">
+        <button mat-raised-button color="primary" (click)="openCreateTaskDialogue()">Create Task</button>
+      </div>
+  
+
+    <br />
+
+
+  
   <div fxLayout="row wrap" fxLayoutGap="30px" fxLayoutAlign="space-evenly center" class="homeMainContainer">
-  <!--TODO column-->
     <div fxLayout="column" class="example-container" >
 
-      <mat-card class="example-card mat-elevation-z8">
+
+      <mat-card class="example-card mat-elevation-z0">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>Todo</mat-card-title>
@@ -14,19 +25,37 @@
           #todoList="cdkDropList"
           [cdkDropListData]="todo"
           [cdkDropListConnectedTo]="[doingList, doneList]"
-          class="example-list"
+          class="task-list"
           (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of todo" cdkDrag>Task:<br />{{item.text}}</div>
+          <div class="example-box" *ngFor="let item of todo" cdkDrag>
+            <mat-card class="example-card mat-elevation-z0 task-card">
+              <mat-card-content>
+                <div fxLayout="row">
+                <div fxFlex>
+                Task: {{item.text}}
+              </div>
+              <div fxFlex>
+                <button [matMenuTriggerFor]="todoOptions" class="task-options-menu" mat-icon-button>
+                  <mat-icon>more_horiz</mat-icon>
+                </button>
+                <mat-menu #todoOptions="matMenu" x-position="before">
+                  <button (click)="deleteTask(item._id)" mat-munu-item>
+                    Remove
+                  </button>
+                </mat-menu>
+              </div>
+              </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
         </div>
         </mat-card-content>
       </mat-card>
           </div>
 
-  <!--doing column-->
        <div fxLayout="column" class="example-container">
-       <mat-card class="example-card mat-elevation-z8">
+       <mat-card class="example-card mat-elevation-z0 ">
           <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>Doing</mat-card-title>
           </mat-card-header>
           <mat-card-content>
@@ -35,9 +64,29 @@
             #doingList="cdkDropList"
             [cdkDropListData]="doing"
             [cdkDropListConnectedTo]="[doneList, todoList]"
-            class="example-list"
+            class="task-list"
             (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of doing" cdkDrag>Task:<br />{{item.text}}</div>
+            <div class="example-box" *ngFor="let item of doing" cdkDrag>
+              <mat-card class="example-card mat-elevation-z0 task-card">
+                <mat-card-content>
+                  <div fxLayout="row">
+                    <div fxFlex>
+                    Task: {{item.text}}
+                  </div>
+                  <div fxFlex>
+                    <button [matMenuTriggerFor]="doingOptions" class="task-options-menu" mat-icon-button>
+                      <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #doingOptions="matMenu" x-position="before">
+                      <button (click)="deleteTask(item._id)" mat-munu-item>
+                        Remove
+                      </button>
+                    </mat-menu>
+                  </div>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
           </div>  
           </mat-card-content>
         </mat-card>
@@ -45,12 +94,10 @@
          </div>
 
 
-  <!--done column-->
          <div fxLayout="column" class="example-container">
-
-          <mat-card class="example-card mat-elevation-z8">
+  
+          <mat-card class="example-card mat-elevation-z80">
             <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
               <mat-card-title>Done</mat-card-title>
             </mat-card-header>
             <mat-card-content>
@@ -59,9 +106,29 @@
             #doneList="cdkDropList"
             [cdkDropListData]="done"
             [cdkDropListConnectedTo]="[todoList, doingList]"
-            class="example-list"
+            class="task-list"
             (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of done" cdkDrag>Task:<br /> {{item.text}}</div>
+            <div class="example-box" *ngFor="let item of done" cdkDrag>
+              <mat-card class="example-card mat-elevation-z0 task-card">
+                <mat-card-content>
+                  <div fxLayout="row">
+                    <div fxFlex>
+                    Task: {{item.text}}
+                  </div>
+                  <div fxFlex>
+                    <button [matMenuTriggerFor]="doneOptions" class="task-options-menu" mat-icon-button>
+                      <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #doneOptions="matMenu" x-position="before">
+                      <button (click)="deleteTask(item._id)" mat-munu-item>
+                        Remove
+                      </button>
+                    </mat-menu>
+                  </div>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
           </div>
             </mat-card-content>
           </mat-card>

@@ -13,18 +13,17 @@
  //all api calls to the server apis go here
 
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Item } from './item.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  sessionUser: string;
 
-  constructor(private cookieService: CookieService, private http: HttpClient){ 
-    this.sessionUser = this.cookieService.get('session_user'); //get looged in empID
+  constructor(private http: HttpClient){ 
               }
 
 
@@ -32,9 +31,8 @@ export class TaskService {
  * 
  * Find all tasks
  */
-
-findAllTasks(){
-  return this.http.get(`/api/employees/${this.sessionUser}/tasks`);
+findAllTasks(empId: string): Observable<any> {
+  return this.http.get(`/api/employees/${empId}/tasks`);
 }
 
 
@@ -43,6 +41,12 @@ findAllTasks(){
   * createTask
   * 
 */
+createTask(empId: string, task: string): Observable<any>{
+  return this.http.post(`/api/employees/${empId}/tasks`, {
+    text: task
+  })
+}
+
 
 /**
   * 
@@ -50,7 +54,20 @@ findAllTasks(){
   * 
 */
 
+updateTask(empId: string, todo: Item[], done: Item[], doing: Item[]){
+  return this.http.put(`/api/employees/${empId}/tasks`, {
+    todo,
+    done,
+    doing
+  })
+}
+
+
 /**
  * deleteTask
  */
+
+ deleteTask(empId: string, taskId: string): Observable<any>{
+  return this.http.delete(`/api/employees/${empId}/tasks/${taskId}`);
+ }
 }
