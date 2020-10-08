@@ -104,6 +104,7 @@ task management page custom styles
   border-bottom: solid 1px #ccc;
   min-height: 68px;
   height: 68px;
+  width: 40;
   font-size: 14px;
   box-sizing: border-box;
   justify-content: space-between;
@@ -112,4 +113,12 @@ task management page custom styles
 
 .task-options-menu {
   margin-top: -15px;
+}
+
+
+.layout-row{
+
+  display: flex;
+  align-items: stretch;
+
 }
