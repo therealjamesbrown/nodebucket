@@ -11,10 +11,11 @@
 p {
     text-align: center;
     font-size: 80px;
+    color: white;
 }
 
 .nodeStyle{
-    color: rgb(3 164 211);
+    color: #ffd740;
 }
 
 .brandLogo{
@@ -27,5 +28,5 @@ mat-card {
 }
 
 mat-toolbar {
-    background-color: white;
+    background-color:#607d8b;
 }

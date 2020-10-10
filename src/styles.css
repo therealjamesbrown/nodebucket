@@ -1,18 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { height: 100%; 
+    position: relative;
+background-color: #607d8b;}
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .error.mat-snack-bar-container{
     margin-top: 100px;
-    background: rgb(3 164 211);
-    color: white;
+    background: #ffd740;
+    color: rgb(0, 0, 0);
     box-sizing: border-box;
     display: block;
 }
 
 .mat-simple-snackbar-action{
     color: black;
-    background-color: rgba(241, 241, 241, 0.911);
+    background-color: rgb(255, 255, 255);
     border-radius: 4px;
 }

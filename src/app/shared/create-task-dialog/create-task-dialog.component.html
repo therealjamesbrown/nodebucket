@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>Add new task</h2>
 <mat-dialog-content [formGroup]="taskForm">
-    <mat-form-field style="width: 200px;">
+    <mat-form-field style="width: 400px;">
         <input placeholder="enter a task" matInput formControlName="text" (keydown.enter)="createTask()"/>
     </mat-form-field>
 </mat-dialog-content>

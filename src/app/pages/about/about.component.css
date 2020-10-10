@@ -1,8 +1,64 @@
-.max-width{
-    max-width: 1750px;
+.about-container {
+    justify-content: center;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+
+  .aboutSection{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 35px;
+   
 }
 
-.aboutSection{
-    text-align: center;
-    font-size: 50px;
+.mat-card{
+  flex: 1 1 auto;
+  border-width: thin;
+  background-color: white;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.mat-card-header{
+  justify-content: center;  
+  margin-bottom: 10px;
+}
+
+.mat-card-content{
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+p{
+  text-indent: 50px;
+  font-weight: 300;
+}
+
+.aboutHeadOuter{
+  background-color: white;
+  text-align: center;
+}
+
+.aboutHeadInner{
+  background-color: #ffd740;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  border-radius: 20px 20px 0px 0px;
+  padding-top: 20px;
+}
+
+h1{
+ font-size: 60px;
+ font-weight: 200;
+ margin-top: 5px;
+ margin-bottom: 25px;
+}
+
+h3 {
+  font-size: 25px;
+  padding-top: 15px;
+  font-weight: 200;
 }

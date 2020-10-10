@@ -1,7 +1,7 @@
 <div fxLayout="column">
     <!-- navigation -->
     <nav fxFlex>
-      <mat-toolbar >
+      <mat-toolbar color="primary" >
         <img src="./assets/logo.png" class="brandLogo">
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
           <button class="navbar-link" routerLink="/about" mat-button>About</button>
@@ -13,20 +13,17 @@
   
     <!-- main content -->
     <div fxFlex class="main-content">
-      <main class="main-content" fxFlex="100%;">
+      <main class="main-content" fxFlex="100%;" >
         <router-outlet></router-outlet>
       </main>
     </div>
-  
     <!-- footer -->
-    <div fxFlex>
-      <footer class="footer">
-        <mat-toolbar class="footer-content">
+    <div fxFlex style="align-content: center;">
+      <footer class="footerStyle">
           <p>
-            &copy; {{year | date: 'yyyy'}} - nodebucket - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
+            &copy; {{year | date: 'yyyy'}} - Nodebucket - James Brown
           </p>
           <span class="nav-spacer"></span>
-        </mat-toolbar>
       </footer>
     </div>
   
