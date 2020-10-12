@@ -1,3 +1,5 @@
+
+
 .about-container {
     justify-content: center;
     margin-left: 15%;
@@ -15,7 +17,7 @@
   flex: 1 1 auto;
   border-width: thin;
   background-color: white;
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 0px 0px 0px 0px;
 }
 
 .mat-card-header{
@@ -46,7 +48,7 @@ p{
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 10px 10px 0px 0px;
   padding-top: 20px;
 }
 

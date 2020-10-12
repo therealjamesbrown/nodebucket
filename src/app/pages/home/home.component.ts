@@ -85,6 +85,10 @@ export class HomeComponent implements OnInit {
   }
 
 
+
+/**
+ * Create task function, which opens a dialog box
+ */
   openCreateTaskDialogue(){
     const dialogRef = this.dialog.open(CreateTaskDialogComponent, {
       disableClose: true
@@ -106,6 +110,11 @@ export class HomeComponent implements OnInit {
     })
   }
 
+/**
+ * 
+ * delete task function
+ * 
+ */
   deleteTask(taskId: string){
     if(taskId){
       console.log(`Task item: ${taskId} was deleted`);
