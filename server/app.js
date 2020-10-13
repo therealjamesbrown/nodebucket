@@ -71,6 +71,6 @@ app.use('/api/employees', EmployeeApi); //localhost:3000/api/employees
 /**
  * Create and start server
  */
-http.createServer(app).listen(port, function() {
+http.createServer(app).listen(process.env.PORT || port, function() {
   console.log(`Application started and listening on port: ${port}`)
 }); // end http create server function
